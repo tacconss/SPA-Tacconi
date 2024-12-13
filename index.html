@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      type="text/css" />
+   <link rel="stylesheet" type="text/css" href="./style.css" />
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+   <title>SPA semplice</title>
+</head>
+
+<body>
+   <div id="container" class="container">
+      <div id="pagina1" class="page">
+         <div class="row">
+            
+               
+            </div></div><div class="eckb-article-content-header-row-right-group"><div id="eckb-article-content-toolbar-container">
+                        <div class="eckb-article-content-toolbar-button-container">
+                            <span class="eckb-print-button-container">			<span class="eckb-toolbar-button-icon epkbfa epkbfa-print"></span>			</span>
+                        </div> </div></div></div><div id="eckb-article-content-header-row-2"><div class="eckb-article-content-header-row-left-group"><div id="eckb-article-content-title-container"><h1 class="eckb-article-title">C/C++: introduzione semplice</h1></div></div></div></div><div id="eckb-article-content-body"><h2 class="wp-block-heading"><strong>Il linguaggio C e C++</strong></h2>
+                
+                
+                
+                <p>Il C &egrave; un linguaggio nato negli anni 70 per permettere di realizzare applicazioni per il sistema operativo Unix, un sistema operativo utilizzato ancora oggi, e di cui Linux &egrave; il pi&ugrave; famoso discendente nel mondo PC e server (Linux &egrave; scritto in C). Il linguaggio C ha una sintassi molto semplice, e ha istruzioni formali che permettono di effettuare istruzioni che svolgono singole azioni, molto vicine concettualmente alle instruzioni che svolge la macchina. Esso quindi si differenzia da linguaggi pi&ugrave; moderni, che invece contengono singole istruzioni che svolgono azioni molto pi&ugrave; complesse. Anche in C &egrave; possibile svolgere azioni complesse, ma queste richiedono pi&ugrave; istruzioni rispetto ad un linguaggio di concezione successiva. Vedremo per&ograve; pi&ugrave; avanti che questo &egrave; anche uno svantaggio.</p>
+                
+                
+                
+                <p>Il C++ &egrave; un linguaggio nato negli anni 80 che aggiunge nuove funzioni al C e che oggi viene utilizzato per molte applicazioni, come per esempio la realizzazione del sistema operativo Windows, i motori dei videogiochi, le applicazioni di controllo di sistemi di sicurezza, i sistemi di calcolo numerico, ed infine le principali librerie che oggi guidano i sistemi di intelligenza artificiale. Ma aldil&agrave; del loro uso specifico sia il C che il C++ sono linguaggi di programmazione che permettono di realizzare qualsiasi tipo di applicazione.</p>
+                
+                
+                
+                <p>La sintassi di base (quindi le istruzioni e i formalismi) di questi linguaggi &egrave; semplice da imparare, infatti oggi la maggior parte dei linguaggi di programmazione ha una sintassi derivata da questi linguaggi (es. Java, JS, C#, PHP, ed in parte anche Python e Swift).</p>
+                
+                
+                
+                <h2 class="wp-block-heading"><strong>Struttura generale di un programma C/C++</strong></h2>
+                
+                
+                
+                <p>Un programma C++ &egrave; costituito da un file di testo chiamato sorgente&nbsp;composto da istruzioni da impartire al computer, con una sintassi formale e l&rsquo;uso di parole chiave predefinite.</p>
+                
+                
+                
+                <p>Un programma &egrave; composto dalle seguenti parti:</p>
+                
+                
+                
+                <p>&ndash; una intestazione, dove si richiede l&rsquo;inclusione di librerie esterne;</p>
+                
+                
+                
+                <p>&ndash; l&rsquo;eventuale uso di un &ldquo;namespace&rdquo;;</p>
+                
+                
+                
+                <p>&ndash; una o pi&ugrave; funzioni, che sono il programma vero e proprio.</p>
+                
+                
+                
+                <p>Le&nbsp;<strong>librerie</strong>&nbsp;sono funzioni gi&agrave; pronte all&rsquo;uso scritte dai creatori del linguaggio o altri fornitori. Per usarle dobbiamo dichiarare esplicitamente che le vogliamo includere nel programma.</p>
+                
+                
+                
+                <p>Possono essere previste istruzioni speciali precedute dal carattere&nbsp;#: sono le&nbsp;<strong>direttive</strong>&nbsp;del compilatore, che vanno inserite all&rsquo;inizio del nostro sorgente. Tra queste la direttiva include che vuol dire appunto che andiamo ad includere una libreria per usarne le funzioni.</p>
+                
+                
+                
+                <p>I&nbsp;<strong>namespace</strong>&nbsp;sono un modo per raggruppare nomi di variabili in un contenitore, anche in sorgenti differenti. Questa necessit&agrave; nasce dal fatto che un programma C++ pu&ograve; essere costituito da molti sorgenti, realizzati anche da differenti sviluppatori: diventa probabile quindi un conflitto di nomi di variabili o funzioni, col rischio quindi di riusare lo stesso nome di variabile senza volerlo. Il namespace permette di identificare univocamente un qualsiasi nome come se fosse un &ldquo;contenitore&rdquo;. Se si vogliono usare variabili di un altro namespace &egrave; necessario usare un prefisso. Per capire bene il concetto di namespace, possiamo pensare a questo come ad una specie di &ldquo;cognome&rdquo; che serve per evitare di confondere nomi identici ma che in realt&agrave; identificano cose differenti. In un sorgente possiamo inserire un namespace, e quindi utilizzare senza prefisso tutte i nomi di quel namespace.</p>
+                
+                
+                
+                <p>Le&nbsp;<strong>funzioni</strong>&nbsp;sono parti del programma identificate da un nome e da un insieme di operazioni. Come vedremo pi&ugrave; avanti le funzioni sono dei &ldquo;sottopgrammi&rdquo; che raggruppano insieme delle istruzioni per fare un compito specifico, sono etichettate con un nome e permettono di essere richiamate dal programma principale o anche da altri sottoprogrammi. In C anche il programma principale &egrave; una funzione speciale che si chiama&nbsp;<strong>main</strong>. Questa &egrave; infatti il punto di&nbsp;<strong>ingresso</strong>&nbsp;nel programma, cio&egrave; la prima funzione che viene eseguita quando facciamo partire il programma. Vedremo in dettaglio le funzioni pi&ugrave; avanti, ma quello che ci interessa ora sapere &egrave; che main &egrave; una funzione obbligatoria, che deve ritornare un valore numerico e che se tutto funziona bene, deve ritornare il valore 0, che significa che ha terminato correttamente.</p>
+                
+                
+                
+                <p>Vediamo il tutto con un esempio:</p>
+                
+                
+                
+                <div class="hcb_wrap"><pre class="prism line-numbers lang-cpp" data-lang="C++"><code>#include &lt;iostream&gt;
+                using namespace std;
+                int main()
+                {
+                    cout &lt;&lt; &quot;Salve mondo!&quot;;
+                &nbsp;&nbsp;&nbsp;&nbsp;return 0;
+                }</code></pre></div>
+                
+                
+                
+                <p>Identifichiamo quindi:</p>
+                
+                
+                
+                <p><strong>&lt;iostream&gt;</strong>&nbsp;&egrave; una libreria di funzioni che permette di utilizzare nello specifico la funzione di stampa&nbsp;<em><strong>cout</strong></em>.</p>
+                
+                
+                
+                <p><strong>std</strong>&nbsp;&egrave; un namespace, stiamo dicendo al programma di usare la famiglia dei nomi &ldquo;std&rdquo; (che contiene cout).</p>
+                
+                
+                
+                <p><strong>int main()</strong>&nbsp;{&hellip; } &egrave; il contenitore della funzione principale, cio&egrave; il blocco di istruzioni che viene eseguito all&rsquo;avvio del programma.</p>
+                
+                
+                
+                <p>Questo programma contiene una istruzione di stampa &ldquo;Salve mondo!&rdquo;, e poi conclude l&rsquo;esecuazione ritornando 0 (correttamente terminato).</p>
+                
+                
+                
+                <h2 class="wp-block-heading"><strong>Eseguire un programma C/C++</strong></h2>
+                
+                
+                
+                <p>Il sorgente non &egrave; immediatamente eseguibile.</p>
+                
+                
+                
+                <p>Per essere eseguito &egrave; necessario usare un programma, detto&nbsp;<strong>compilatore</strong>, che verifica che il codice sia corretto formalmente e poi lo trasforma in un applicativo che comprende anche le librerie eventualmente incluse.</p>
+                
+                
+                
+                <p>Non &egrave; detto per&ograve; che un programma formalmente corretto sia anche senza errori.</p>
+                
+                
+                
+                <p>Infatti come sappiamo un algoritmo pu&ograve; essere formalmente corretto ma nella sostanza essere sbagliato.</p>
+                
+                
+                
+                <h2 class="wp-block-heading" id="programma-di-esempio"><strong>Un programma di esempio</strong></h2>
+                
+                
+                
+                <p>Coi diagrammi di flusso si &egrave; visto che &egrave; possibile eseguire le seguenti operazioni:</p>
+                
+                
+                
+                <p>&ndash; input/output da tastiera e schermo</p>
+                
+                
+                
+                <p>&ndash; assegnazione di valori a variabili tramite espressioni (es. a = b+c)</p>
+                
+                
+                
+                <p>&ndash; verifica condizioni</p>
+                
+                
+                
+                <p>&ndash; cicli</p>
+                
+                
+                
+                <p>E&rsquo; possibile tradurre il diagramma di flusso in codice C codificando il comportamento tramite istruzioni.</p>
+                
+                
+                
+                <p>Le istruzioni saranno quindi di assegnazione, condizione e ciclo, oppure di input/output.</p>
+                
+                
+                
+                <p>Qui un semplice esempio di programma sorgente.</p>
+                
+                
+                
+                <div class="hcb_wrap"><pre class="prism line-numbers lang-cpp" data-lang="C++"><code>#include &lt;iostream&gt;
+                using namespace std;
+                
+                int main()
+                {
+                &nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; &quot;Inserisci il valore di a: &quot;;
+                &nbsp;&nbsp;&nbsp;&nbsp;int a;
+                &nbsp;&nbsp;&nbsp;&nbsp;cin &gt;&gt; a;
+                &nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; &quot;Inserisci il valore di b: &quot;;
+                &nbsp;&nbsp;&nbsp;&nbsp;int b;
+                &nbsp;&nbsp;&nbsp;&nbsp;cin &gt;&gt; b;
+                &nbsp;&nbsp;&nbsp;&nbsp;int somma = a + b;
+                &nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; &quot;La somma &egrave;: &quot; &lt;&lt; somma;
+                &nbsp;&nbsp;&nbsp;&nbsp;return 0;
+                }</code></pre></div>
+                
+                
+                
+                <h2 class="wp-block-heading"><strong>Tipi di dato e variabili</strong></h2>
+                
+                
+                
+                <p>In C &egrave; possibile usare le variabili, ma vanno dichiarate prima e devono avere un tipo di dato associato.</p>
+                
+                
+                
+                <p>I tipi di dato base fondamentali del C++ sono:&nbsp;<strong>int</strong>,&nbsp;<strong>float</strong>&nbsp;(virgola mobile),&nbsp;<strong>bool</strong>,&nbsp;<strong>char</strong>. Ne sono presenti molti altri, che vedremo pi&ugrave; avanti.</p>
+                
+                
+                
+                <p>In C++ ogni variabile va dichiarata indicando prima di tutto il tipo.</p>
+                
+                
+                
+                <div class="hcb_wrap"><pre class="prism line-numbers lang-cpp" data-lang="C++"><code>int i = 0;</code></pre></div>
+                
+                
+                
+                <p><strong>Sintassi</strong></p>
+                
+                
+                
+                <p>La sintassi di C++ prevede le seguenti regole:</p>
+                
+                
+                
+                <p>&ndash; ogni istruzione deve terminare con un ;</p>
+                
+                
+                
+                <div class="hcb_wrap"><pre class="prism line-numbers lang-cpp" data-lang="C++"><code>int i = 0;</code></pre></div>
+                
+                
+                
+                <p>Sono consentiti spazi nelle dichiarazioni di variabile, sono invece obbligatori nelle definizioni di tipo e nell&rsquo;uso di parole chiave riservate.</p>
+                
+                
+                
+                <p>&ndash; una istruzione pu&ograve; essere sostituita da un blocco:</p>
+                
+                
+                
+                <div class="hcb_wrap"><pre class="prism line-numbers lang-cpp" data-lang="C++"><code>{
+                
+                int i=0;
+                
+                int j=i+2;
+                
+                }</code></pre></div>
+                
+                
+                
+                <p>Le variabili dichiarate in un blocco non sono visibili anche all&rsquo;esterno del blocco.</p>
+                
+                
+                
+                <p>Una variabile dichiarata in un blocco con lo stesso nome di una variabile dichiarata esternamente, la va a sostituire (come simbolo) all&rsquo;interno del blocco.</p>
+                
+                
+                
+                <p>Le variabili possono essere&nbsp;<strong>globali</strong>&nbsp;se dichiarate fuori da una funzione,&nbsp;<strong>locali</strong>&nbsp;se dichiarate in una&nbsp;<strong>funzione</strong>(visibili quindi solo in quella funzione) o di&nbsp;<strong>blocco</strong>&nbsp;(visibili solo nel blocco).</p>
+                
+                
+                
+                <h2 class="wp-block-heading"><strong>Espressioni</strong></h2>
+                
+                
+                
+                <p>Una espressione &egrave; una struttura codificata di dati e operatori che viene valutata quando eseguita.</p>
+                
+                
+                
+                <p>Il risultato dell&rsquo;espressione poi pu&ograve; essere assegnata ad una variabile. Es.</p>
+                
+                
+                
+                <div class="hcb_wrap"><pre class="prism line-numbers lang-cpp" data-lang="C++"><code>j=i+2;</code></pre></div>
+                
+                
+                
+                <p>Essa pu&ograve; essere oggetto di assegnazione o parametro di funzione. L&rsquo;espressione viene sempre valutata prima del suo utilizzo (ovvero stampa o assegnazione).</p>
+                
+                
+                
+                <p>Espressioni principali di C++:</p>
+                
+                
+                
+                <p>&ndash;&nbsp;<strong>literal</strong>: valori numerici o stringhe assoluti. es 1, False, &ldquo;Ciao&rdquo;.</p>
+                
+                
+                
+                <p>&ndash; espressioni&nbsp;<strong>aritmetiche</strong>. Es. &ldquo;5+4&rdquo;, &ldquo;90/2&rdquo;. Possono essere applicati operatori matematici (+,-,/,*,%, ecc.).</p>
+                
+                
+                
+                <p>&ndash; espressioni&nbsp;<strong>logiche:</strong>&nbsp;es.. 5 &gt; 3. Possono essere solo True o False. Possono essere applicati operatori booleani (&lt;, &lt;=, &gt;, &gt;=, !=, ==, !== e !==).</p>
+                
+                
+                
+                <p>&ndash; operatori&nbsp;<strong>unari</strong>. Es. c++ (incrementa di 1 il valore di c)</p>
+                
+                
+                
+                <p>Vedremo in dettaglio le varie espressioni logiche e booleane.</p>
+                
+                
+                
+                <h2 class="wp-block-heading"><strong>Input e output</strong></h2>
+                
+                
+                
+                <p>Per l&rsquo;input e l&rsquo;output si usano cin e cout. Questi due simboli rappresentano gli &ldquo;stream&rdquo; ovvero dei flussi, rispettivamente in ingresso e uscita.</p>
+                
+                
+                
+                <p><strong>cin</strong>: con questo simbolo richiediamo esplicitamente dal flusso di input l&rsquo;inserimento di un valore tramite operatore &gt;&gt;. Esempio:</p>
+                
+                
+                
+                <div class="hcb_wrap"><pre class="prism line-numbers lang-cpp" data-lang="C++"><code>int n;
+                
+                cin &gt;&gt; n;</code></pre></div>
+                
+                
+                
+                <p>A runtime, quando viene eseguita questa istruzione, il programma lascia il controllo all&rsquo;utente, che da tastiera pu&ograve; inserire un valore. Questo viene passato (operatore &gt;&gt;) a n che ne assume il valore. Occorre fare attenzione: il flusso di cin si interrompe quando l&rsquo;utente preme invio o spazio.</p>
+                
+                
+                
+                <p><strong>cout</strong>: con questo simbolo inviamo al flusso di output una espressione o pi&ugrave; espressioni, tramite operatore &lt;&lt;</p>
+                
+                
+                
+                <p>Esempio:</p>
+                
+                
+                
+                <div class="hcb_wrap"><pre class="prism line-numbers lang-cpp" data-lang="C++"><code>cout &gt;&gt; &quot;Hello world&quot;;
+                
+                int n = 4;
+                
+                cout &gt;&gt; &quot;Il valore &egrave;: &quot; &gt;&gt; n;
+                
+                cout &gt;&gt; &quot;Ciao&quot; &gt;&gt; endl;</code></pre></div>
+                
+                
+                
+                <p><strong>endl</strong>&nbsp;&egrave; una espressione speciale, indipendente dal sistema operativo, che indica il carattere di fine linea.</p>
+                
+                
+                
+                <p>E&rsquo; possibile concatenare pi&ugrave; espressioni con l&rsquo;operatore &gt;&gt;.</p>
+                
+                
+                
+                <h2 class="wp-block-heading"><strong>Riepilogo</strong></h2>
+                
+                
+                
+                <p>Rivediamo velocemente le istruzioni e le funzioni utilizzate</p>
+                
+                
+                
+
+         </div>
+         <div class="row"><a href="#pagina2">Questo è un link a pagina 2</a></div>
+         <div class="row"><a href="#pagina3">Questo è un link a pagina 3</a></div>                  
+      </div>
+      <div id="pagina2" class="page">
+         <div class="row"><a href="#pagina1">Questo è un link a pagina 1</a></div>
+         <div class="row">Questo è il contenuto di pagina 2</div>         
+         <div class="row"><a href="#pagina3">Questo è un link a pagina 3</a></div>                  
+      </div>
+      <div id="pagina3" class="page">         
+         <div class="row"><a href="#pagina1">Questo è un link a pagina 1</a></div>
+         <div class="row"><a href="#pagina2">Questo è un link a pagina 2</a></div>                  
+         <div class="row">Questo è il contenuto di pagina 3</div>
+      </div>
+   </div>
+   <script type="module" src="./index.js"></script>
+
+</body>
+
+</html>
