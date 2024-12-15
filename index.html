@@ -13,9 +13,29 @@
 
 <body>
    <div id="container" class="container">
+
+      <!-- Homepage -->
+      <div id="home" class="page">
+         <div class="row">
+            <h1>Benvenuti nella SPA di esempio</h1>
+            <p>Qui trovate i link a tre lezioni interessanti da cipiaceinfo.it:</p>
+         </div>
+         <div class="row">
+            <a href="#pagina1">Vai a Lezione 1: C/C++: introduzione semplice</a>
+         </div>
+         <div class="row">
+            <a href="#pagina2">Vai a Lezione 2: Gestione Files</a>
+         </div>
+         <div class="row">
+            <a href="#pagina3">Vai a Lezione 3: Single Page Application</a>
+         </div>
+      </div>
+
       <div id="pagina1" class="page">
+         
        						</span>
                </div> </div></div></div><div id="eckb-article-content-header-row-2"><div class="eckb-article-content-header-row-left-group"><div id="eckb-article-content-title-container"><h1 class="eckb-article-title">C/C++: introduzione semplice</h1></div></div></div></div><div id="eckb-article-content-body"><h2 class="wp-block-heading"><strong>Il linguaggio C e C++</strong></h2>
+
          
          
          
@@ -347,9 +367,11 @@
          
          <figure class="wp-block-table"><table><thead><tr><th>Codice</th><th>Significato</th></tr></thead><tbody><tr><td>#include &lt;iostream&gt;</td><td>permette di includere la&nbsp;libreria&nbsp;che contiene le funzioni cin e cout</td></tr><tr><td>using namespace std</td><td>permette di utilizzare lo&nbsp;spazio dei nomi&nbsp;std, e quindi utilizzare cin/cout senza mettere un prefisso</td></tr><tr><td>int main(){&nbsp;&nbsp;&hellip;&nbsp;&nbsp;&nbsp;return 0;&nbsp;&nbsp;&nbsp;}</td><td>&egrave; la funzione&nbsp;principale&nbsp;del programma, &egrave; obbligatorio metterla in tutti i programmi. La funzione restituisce un dato di tipo int (intero) e normalmente ritorna il valore 0 (che vuol dire che ha finito correttamente).</td></tr><tr><td>cout &lt;&lt; &ldquo;..&rdquo;</td><td>cout ci permette di&nbsp;stampare&nbsp;del testo sulla console</td></tr><tr><td>cin &gt;&gt; myVar</td><td>cin ci permette di&nbsp;far inserire&nbsp;del testo dall&rsquo;utente</td></tr><tr><td>int myVar</td><td>questa &egrave; una istruzione di&nbsp;dichiarazione&nbsp;che istruisce il computer di creare una variabile che si chiama myVar e che &egrave; di tipo intero. Il tipo di dato (il C++ prevede diversi tipi di dato) &egrave;&nbsp;obbligatorio.</td></tr></tbody></table></figure>
         
-        
-         <div class="row"><a href="#pagina2">Questo è un link a pagina 2</a></div>
-         <div class="row"><a href="#pagina3">Questo è un link a pagina 3</a></div>                  
+        <div class = "row">
+         <a href="#home">Torna alla Home</a>
+        </div>
+        <!--<div class="row"><a href="#pagina2">Questo è un link a pagina 2</a></div>
+         <div class="row"><a href="#pagina3">Questo è un link a pagina 3</a></div>   -->                 
       </div>
       
       <div id="pagina2" class="page">
@@ -492,7 +514,9 @@ int main() {
 &nbsp;&nbsp;&nbsp;&nbsp;return 0;
 }</code></pre></div>
         
-         <div class="row"><a href="#pagina3">Questo è un link a pagina 3</a></div>                  
+<div class = "row">
+   <a href="#home">Torna alla Home</a>
+  </div>                
       </div>
 
       <div id="pagina3" class="page">         
@@ -706,8 +730,11 @@ int main() {
             
             
             <p>Il navigator pu&ograve; essere quindi incluso nella pagina index.js del progetto, analogamente a quanto gi&agrave; visto nella lezione sui componenti</a>.</p>
-            
+            <div class = "row">
+               <a href="#home">Torna alla Home</a>
+              </div>
    </div>
+
    <script type="module" src="./index.js"></script>
 
 </body>
