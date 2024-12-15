@@ -354,16 +354,359 @@
       
       <div id="pagina2" class="page">
          <div class="row"><a href="#pagina1">Questo è un link a pagina 1</a></div>
-         <div class="row">Questo è il contenuto di pagina 2</div>         
+
+         
+			</div> </div></div></div><div id="eckb-article-content-header-row-2"><div class="eckb-article-content-header-row-left-group"><div id="eckb-article-content-title-container"><h1 class="eckb-article-title">Gestione files</h1></div></div></div></div><div id="eckb-article-content-body"><p>In C++ (in C si possono gestire files ma con altre librerie) la gestione dei files ricalca gli stessi concetti della libreria &lt;iostream&gt; ovvero considerando un file come uno stream da cui leggere o su cui scrivere.</p>
+
+
+
+<h2 class="wp-block-heading">Lettura<strong> di files</strong></h2>
+
+
+
+<h4 class="wp-block-heading"><strong>1) Lettura con operatore &gt;&gt;</strong></h4>
+
+
+
+<p>Partiamo dalle istruzioni principali:</p>
+
+
+
+<p>&ndash;&nbsp;<strong><code>#include &lt;fstream&gt;</code></strong>&nbsp;importa la libreria;</p>
+
+
+
+<p>&ndash;&nbsp;<code><strong>ifstream file(&quot;file.txt</strong>&quot;)&nbsp;</code>-&gt; crea una variabile di tipo ifstream (stream in lettura) di nome &ldquo;file.txt&rdquo; ed apre il file;</p>
+
+
+
+<p>&ndash;&nbsp;<strong><code>file.close();</code></strong>&nbsp;-&gt; chiude il file.</p>
+
+
+
+<p><strong>&ndash;&nbsp;<code>file &gt;&gt; string;</code></strong>&nbsp;-&gt; legge dal file una stringa di lunghezza massima 10. Si ricorda che valgono le stesse regole di cin, quindi se prima della lunghezza massima viene letto uno spazio o un carattere di fine riga, si interrompe la lettura dal file e viene memorizzata la stringa fino a quel punto;</p>
+
+
+
+<div class="hcb_wrap"><pre class="prism line-numbers lang-cpp" data-lang="C++"><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+using namespace std;
+
+int main() {
+&nbsp;&nbsp;&nbsp;&nbsp;ifstream file(&quot;file.txt&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;char string[10];
+&nbsp;&nbsp;&nbsp;&nbsp;file &gt;&gt; string;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; string;
+&nbsp;&nbsp;&nbsp;&nbsp;file.close();
+&nbsp;&nbsp;&nbsp;&nbsp;return 0;
+}</code></pre></div>
+
+
+
+<h4 class="wp-block-heading"><strong>2) Lettura tramite get</strong></h4>
+
+
+
+<p><strong>&ndash;&nbsp;<code>file.get(c)</code></strong>&nbsp;-&gt; richiede un carattere da file che memorizza nella variabile c (di tipo char). Questa funzione get restituisce&nbsp;<strong>true</strong>&nbsp;se ci sono ancora caratteri nel file, oppure&nbsp;<strong>false</strong>&nbsp;se il file &egrave; terminato.</p>
+
+
+
+<div class="hcb_wrap"><pre class="prism line-numbers lang-cpp" data-lang="C++"><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+using namespace std;
+
+int main() {
+&nbsp;&nbsp;&nbsp;&nbsp;ifstream file(&quot;file.txt&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;char c;
+&nbsp;&nbsp;&nbsp;&nbsp;while (file.get(c))&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; c;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;file.close();
+&nbsp;&nbsp;&nbsp;&nbsp;return 0;
+}</code></pre></div>
+
+
+
+<h4 class="wp-block-heading"><strong>3) Lettura tramite getline&nbsp;</strong></h4>
+
+
+
+<p><strong>&ndash;&nbsp;</strong><strong>file.getline(string, n)</strong>&nbsp;-&gt; legge&nbsp;<strong>n</strong>&nbsp;caratteri da&nbsp;<strong>file&nbsp;</strong>e li memorizza su string. Se leggendo i caratteri trova un carattere &ldquo;a capo&rdquo;, termina la lettura. Questa funzione restituisce&nbsp;<strong>true</strong>&nbsp;se ci sono ancora caratteri nel file, oppure&nbsp;<strong>false</strong>&nbsp;se il file &egrave; terminato.</p>
+
+
+
+<div class="hcb_wrap"><pre class="prism line-numbers lang-cpp" data-lang="C++"><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+using namespace std;
+
+int main() {
+&nbsp;&nbsp;&nbsp;&nbsp;ifstream file(&quot;file.txt&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;char string[10];
+&nbsp;&nbsp;&nbsp;&nbsp;while (file.getline(string, 10)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; string &lt;&lt; endl;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;file.close();
+&nbsp;&nbsp;&nbsp;&nbsp;return 0;
+}</code></pre></div>
+
+
+
+<h3 class="wp-block-heading"><strong>Scrittura di files</strong></h3>
+
+
+
+<p>Qui le istruzioni principali:</p>
+
+
+
+<p>&ndash;&nbsp;<strong>#include &lt;fstream&gt;</strong>&nbsp;importa la libreria;</p>
+
+
+
+<p>&ndash;&nbsp;<strong>ofstream file(&ldquo;file.txt</strong>&ldquo;)&nbsp;-&gt; crea una variabile di tipo ofstream (stream in scrittura) di nome &ldquo;file.txt&rdquo; ed apre il file;</p>
+
+
+
+<p>&ndash;&nbsp;<strong>file.close();</strong>&nbsp;-&gt; chiude il file.</p>
+
+
+
+<p><strong>&ndash;&nbsp;</strong><strong>file &lt;&lt; string;</strong>&nbsp;-&gt; scrive sul file qualunque contenuto di tipo testo.</p>
+
+
+
+<div class="hcb_wrap"><pre class="prism line-numbers lang-cpp" data-lang="C++"><code>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+using namespace std;
+
+int main() {
+&nbsp;&nbsp;&nbsp;&nbsp;ofstream file(&quot;file.txt&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;for (int i=0; i&lt;100; i++) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file &lt;&lt; i &lt;&lt; &quot; &quot;;
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;file.close();
+&nbsp;&nbsp;&nbsp;&nbsp;return 0;
+}</code></pre></div>
+        
          <div class="row"><a href="#pagina3">Questo è un link a pagina 3</a></div>                  
       </div>
 
       <div id="pagina3" class="page">         
          <div class="row"><a href="#pagina1">Questo è un link a pagina 1</a></div>
          <div class="row"><a href="#pagina2">Questo è un link a pagina 2</a></div>                  
-         <div class="row">Questo è il contenuto di pagina 3</div>
-      </div>
-      
+                  </div> </div></div></div><div id="eckb-article-content-header-row-2"><div class="eckb-article-content-header-row-left-group"><div id="eckb-article-content-title-container"><h1 class="eckb-article-title">Single Page Application</h1></div></div></div></div><div id="eckb-article-content-body"><p>Una Single Page Application &egrave; una applicazione Web Javascript composta da una sola pagina html, ma che pu&ograve; comprendere diverse pagine visualizzabili dall&rsquo;utente. In pratica anzich&egrave; utilizzare il sistema tradizionale per cui ad ogni pagina Web corrisponde una pagina HTML con un eventuale Javascript associato,  viene caricata una sola pagina, ed &egrave; il programma Javascript a mostrare (o nascondere) dinamicamente la singola pagina dell&rsquo;applicazione attualmente visualizzata.</p>
+            
+            
+            
+            <p>Il grosso vantaggio di questo tipo di applicazione &egrave; che il caricamento della pagina &egrave; praticamente istantaneo (nessuna <span class="glossaryLink"  aria-describedby="tt"  data-cmtooltip="&lt;div class=glossaryItemTitle&gt;Latenza&lt;/div&gt;&lt;div class=glossaryItemBody&gt;&amp;lt;!-- wp:paragraph --&amp;gt;La latenza &egrave; il tempo che intercorre tra una richiesta ad un sistema informatico e la risposta. E&amp;#039; una delle principali metriche per misurare le prestazioni di un sistema informatico.&amp;lt;br/&amp;gt;&amp;lt;!-- /wp:paragraph --&amp;gt;&amp;lt;!-- wp:paragraph --&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;!-- /wp:paragraph --&amp;gt;&lt;/div&gt;"  data-gt-translate-attributes='[{"attribute":"data-cmtooltip", "format":"html"}]'  tabindex='0' role='link'>latenza</span>) e questo da all&rsquo;utente la percezione non di navigare su un sito ma di utilizzare una applicazione locale, dove l&rsquo;utilizzo della rete &egrave; ridotto al solo di scambio di dati col server.</p>
+            
+            
+            
+            <p>Il meccanismo pi&ugrave; semplice per gestire una SPA &egrave; attraverso la creazione di &ldquo;pagine logiche&rdquo; definite da un tag specifico (ad esempio &lt;div&gt;) all&rsquo;interno della pagina HTML e poi realizzare un <span class="glossaryLink"  aria-describedby="tt"  data-cmtooltip="&lt;div class=glossaryItemTitle&gt;Componente&lt;/div&gt;&lt;div class=glossaryItemBody&gt;&amp;lt;!-- wp:paragraph --&amp;gt;Un componente di una applicazione &egrave; un elemento autonomo del software che svolge un compito definito. Esso comunica con gli altri componenti dell&amp;#039;applicazione e pu&ograve; far parte di un modulo. &amp;lt;br/&amp;gt;&amp;lt;!-- /wp:paragraph --&amp;gt;&lt;/div&gt;"  data-gt-translate-attributes='[{"attribute":"data-cmtooltip", "format":"html"}]'  tabindex='0' role='link'>componente</span> JS con il ruolo di &ldquo;navigatore&rdquo;, che secondo regole ben definite, mostra in ogni momento una sola di queste pagine. </p>
+            
+            
+            
+            <p>Nel progetto qui presentato realizzeremo un tipo di pagina di questo tipo, con queste caratteristiche:</p>
+            
+            
+            
+            <ol class="wp-block-list">
+            <li>La pagina &egrave; suddivisa in contenitori<code><strong> &lt;div&gt;</strong></code> che contengono i componenti di una singola pagina logica.</li>
+            
+            
+            
+            <li>Ogni pagina &egrave; associata ad una URL interna (che contiene quindi un suffisso &ldquo;#nomepagina&rdquo;) ovvero utilizzando la forma <code>https//miosito/path/pagina.html<strong>#nomepagina</strong></code>, dove ad ogni pagina viene associata una URL univoca. Quindi per ogni url interna avremo un contenitore div che contiene una specifica pagina logica. Le singole pagine possono contenere link ad altre pagine logiche, permettendo quindi una navigazione interna.</li>
+            
+            
+            
+            <li>E&rsquo; presente poi un <span class="glossaryLink"  aria-describedby="tt"  data-cmtooltip="&lt;div class=glossaryItemTitle&gt;Componente&lt;/div&gt;&lt;div class=glossaryItemBody&gt;&amp;lt;!-- wp:paragraph --&amp;gt;Un componente di una applicazione &egrave; un elemento autonomo del software che svolge un compito definito. Esso comunica con gli altri componenti dell&amp;#039;applicazione e pu&ograve; far parte di un modulo. &amp;lt;br/&amp;gt;&amp;lt;!-- /wp:paragraph --&amp;gt;&lt;/div&gt;"  data-gt-translate-attributes='[{"attribute":"data-cmtooltip", "format":"html"}]'  tabindex='0' role='link'>componente</span> navigator che contiene una funzione che analizza la URL corrente, ed in base a questa mostra la pagina corrispondente.</li>
+            
+            
+            
+            <li>Infine il navigator intercetta l&rsquo;evento di cambio pagina, esegue la funzione del punto precedente e cambia la pagina visualizzata, in modo del tutto trasparente per l&rsquo;utente.</li>
+            </ol>
+            
+            
+            
+            <p>Vediamo un esempio di codice funzionante, da personalizzare poi per i propri progetti.</p>
+            
+            
+            
+            <h2 class="wp-block-heading">HTML</h2>
+            
+            
+            
+            <div class="hcb_wrap"><pre class="prism line-numbers lang-html" data-lang="HTML"><code>&lt;!DOCTYPE html&gt;
+            &lt;html lang=&quot;en&quot;&gt;
+            
+            &lt;head&gt;
+               &lt;meta charset=&quot;UTF-8&quot;&gt;
+               &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+               &lt;link href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;
+                  type=&quot;text/css&quot; /&gt;
+               &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;./style.css&quot; /&gt;
+               &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+               &lt;title&gt;SPA semplice&lt;/title&gt;
+            &lt;/head&gt;
+            
+            &lt;body&gt;
+               &lt;div id=&quot;container&quot; class=&quot;container&quot;&gt;
+                  &lt;div id=&quot;pagina1&quot; class=&quot;page&quot;&gt;
+                     &lt;div class=&quot;row&quot;&gt;Questo &egrave; il contenuto di pagina 1&lt;/div&gt;
+                     &lt;div class=&quot;row&quot;&gt;&lt;a href=&quot;#pagina2&quot;&gt;Questo &egrave; un link a pagina 2&lt;/a&gt;&lt;/div&gt;
+                     &lt;div class=&quot;row&quot;&gt;&lt;a href=&quot;#pagina3&quot;&gt;Questo &egrave; un link a pagina 3&lt;/a&gt;&lt;/div&gt;                  
+                  &lt;/div&gt;
+                  &lt;div id=&quot;pagina2&quot; class=&quot;page&quot;&gt;
+                     &lt;div class=&quot;row&quot;&gt;&lt;a href=&quot;#pagina1&quot;&gt;Questo &egrave; un link a pagina 1&lt;/a&gt;&lt;/div&gt;
+                     &lt;div class=&quot;row&quot;&gt;Questo &egrave; il contenuto di pagina 2&lt;/div&gt;         
+                     &lt;div class=&quot;row&quot;&gt;&lt;a href=&quot;#pagina3&quot;&gt;Questo &egrave; un link a pagina 3&lt;/a&gt;&lt;/div&gt;                  
+                  &lt;/div&gt;
+                  &lt;div id=&quot;pagina3&quot; class=&quot;page&quot;&gt;         
+                     &lt;div class=&quot;row&quot;&gt;&lt;a href=&quot;#pagina1&quot;&gt;Questo &egrave; un link a pagina 1&lt;/a&gt;&lt;/div&gt;
+                     &lt;div class=&quot;row&quot;&gt;&lt;a href=&quot;#pagina2&quot;&gt;Questo &egrave; un link a pagina 2&lt;/a&gt;&lt;/div&gt;                  
+                     &lt;div class=&quot;row&quot;&gt;Questo &egrave; il contenuto di pagina 3&lt;/div&gt;
+                  &lt;/div&gt;
+               &lt;/div&gt;
+               &lt;script type=&quot;module&quot; src=&quot;./index.js&quot;&gt;&lt;/script&gt;
+            
+            &lt;/body&gt;
+            
+            &lt;/html&gt;</code></pre></div>
+            
+            
+            
+            <p>come si pu&ograve; vedere ogni &lt;div&gt; di pagina &egrave; caratterizzato da una classe &ldquo;page&rdquo; in modo da essere identificabile dal <span class="glossaryLink"  aria-describedby="tt"  data-cmtooltip="&lt;div class=glossaryItemTitle&gt;Componente&lt;/div&gt;&lt;div class=glossaryItemBody&gt;&amp;lt;!-- wp:paragraph --&amp;gt;Un componente di una applicazione &egrave; un elemento autonomo del software che svolge un compito definito. Esso comunica con gli altri componenti dell&amp;#039;applicazione e pu&ograve; far parte di un modulo. &amp;lt;br/&amp;gt;&amp;lt;!-- /wp:paragraph --&amp;gt;&lt;/div&gt;"  data-gt-translate-attributes='[{"attribute":"data-cmtooltip", "format":"html"}]'  tabindex='0' role='link'>componente</span> navigator. L&rsquo;id del div corrisponde alla URL interna del sito, pertanto ad esempio <span class="glossaryLink"  aria-describedby="tt"  data-cmtooltip="&lt;div class=glossaryItemTitle&gt;HTTP&lt;/div&gt;&lt;div class=glossaryItemBody&gt;&amp;lt;!-- wp:paragraph --&amp;gt;Protocollo di livello applicazione che si basa su una architettura client-server dove il client invia richieste al server, ed il server restituisce risposte. E&amp;#039; la tecnologia principale del Web, usato dai browser, dalle applicazioni desktop e mobili, e costituisce una delle principali tecnologie di Internet.&amp;lt;br/&amp;gt;&amp;lt;!-- /wp:paragraph --&amp;gt;&lt;/div&gt;"  data-gt-translate-attributes='[{"attribute":"data-cmtooltip", "format":"html"}]'  tabindex='0' role='link'>http</span>://miosito/spa.html#pagina2 corrisponde alla visualizzazione del &lt;div&gt; con id=&rdquo;pagina2&Prime;. Osservare poi che le ancore hanno lo stesso nome delle pagine presenti (col prefisso &ldquo;#&rdquo;).</p>
+            
+            
+            
+            <h2 class="wp-block-heading">CSS</h2>
+            
+            
+            
+            <div class="hcb_wrap"><pre class="prism line-numbers lang-css" data-lang="CSS"><code>.visible {
+               display: block;
+            }
+            
+            .hidden {
+               display: none;
+            }</code></pre></div>
+            
+            
+            
+            <p>Sono necessarie due classi CSS per gestire la visibilit&agrave; delle singole pagine, come vedremo qui sotto.</p>
+            
+            
+            
+            <h2 class="wp-block-heading">Javascript: Navigator</h2>
+            
+            
+            
+            <div class="hcb_wrap"><pre class="prism line-numbers lang-js" data-lang="JavaScript"><code>const hide = (elements) =&gt; {
+               elements.forEach((element) =&gt; {
+                  element.classList.add(&quot;hidden&quot;);
+                  element.classList.remove(&quot;visible&quot;);
+               });
+            }
+            
+            const show = (element) =&gt; {
+               element.classList.add(&quot;visible&quot;);
+               element.classList.remove(&quot;hidden&quot;);   
+            }
+            
+            export const createNavigator = (parentElement) =&gt; {
+               const pages = Array.from(parentElement.querySelectorAll(&quot;.page&quot;));
+               
+               const render = () =&gt; {
+                  const url = new URL(document.location.href);
+                  const pageName = url.hash.replace(&quot;#&quot;, &quot;&quot;);
+                  const selected = pages.filter((page) =&gt; page.id === pageName)[0] || pages[0];
+            
+                  hide(pages);
+                  show(selected);
+               }
+               window.addEventListener('popstate', render); 
+               render();   
+            }</code></pre></div>
+            
+            
+            
+            <p>La funzione <strong>hide</strong> ha lo scopo di nascondere tutte le pagine prima di mostrare la nuova pagina. La funzione <strong>show</strong> invece mostra la sola pagina selezionata.</p>
+            
+            
+            
+            <p>Veniamo al costruttore del navigator. L&rsquo;istruzione:</p>
+            
+            
+            
+            <div class="hcb_wrap"><pre class="prism line-numbers lang-plain"><code>   const pages = Array.from(parentElement.querySelectorAll(&quot;.page&quot;));</code></pre></div>
+            
+            
+            
+            <p>seleziona tutti i div con classe &ldquo;page&rdquo;, ovvero le pagine logiche.</p>
+            
+            
+            
+            <p>Le istruzioni:</p>
+            
+            
+            
+            <div class="hcb_wrap"><pre class="prism line-numbers lang-plain"><code>const url = new URL(document.location.href);
+            const pageName = url.hash.replace(&quot;#&quot;, &quot;&quot;);</code></pre></div>
+            
+            
+            
+            <p>servono a estrarre dal suffisso il nome della pagina, che sappiamo corrispondere alla pagina.</p>
+            
+            
+            
+            <p>A questo punto:</p>
+            
+            
+            
+            <div class="hcb_wrap"><pre class="prism line-numbers lang-plain"><code>const selected = pages.filter((page) =&gt; page.id === pageName)[0] || pages[0];</code></pre></div>
+            
+            
+            
+            <p>Seleziona la pagina a partire dal nome (o di default la prima pagina).</p>
+            
+            
+            
+            <div class="hcb_wrap"><pre class="prism line-numbers lang-plain"><code>hide(pages);
+            show(selected);</code></pre></div>
+            
+            
+            
+            <p>A questo punto si procede prima col nascondere tutte le pagine e poi mostrare quella selezionata.</p>
+            
+            
+            
+            <p>Infine:</p>
+            
+            
+            
+            <div class="hcb_wrap"><pre class="prism line-numbers lang-plain"><code>window.addEventListener('popstate', render);</code></pre></div>
+            
+            
+            
+            <p>L&rsquo;evento popstate viene emesso ogni volta che cambia la url (ad esempio dopo aver cliccato su un link). Quindi quel che succede &egrave; che non appena l&rsquo;utente clicca su un link interno questo evento viene intercettato dal navigator, che esegue la funzione render, che analizza la URL del browser, estrae il nome della pagina e la mostra.</p>
+            
+            
+            
+            <h2 class="wp-block-heading">Javascript: index</h2>
+            
+            
+            
+            <div class="hcb_wrap"><pre class="prism line-numbers lang-plain"><code>import { createNavigator } from &quot;./navigator.js&quot;;
+            
+            const navigator = createNavigator(document.querySelector(&quot;#container&quot;));</code></pre></div>
+            
+            
+            <p>Il navigator pu&ograve; essere quindi incluso nella pagina index.js del progetto, analogamente a quanto gi&agrave; visto nella lezione sui componenti</a>.</p>
+            
    </div>
    <script type="module" src="./index.js"></script>
 
